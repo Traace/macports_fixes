@@ -1,0 +1,34 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                extract-xiso
+version             2.7.1.3
+
+categories          sysutils
+platforms           darwin
+license             GPL-3
+
+maintainers         hotmail.de:xxtraacexx \
+                    openmaintainer
+description         Extract-XISO for OSX 10.3 +
+long_description    Extract-xiso is the premier backup tool for creating and extracting disc image .iso's of XBox games. \
+                    OS support includes Linux, FreeBSD, Mac OS X (i386 and PowerPC), Windows and other UNIXes.
+
+depends_build       port:gmake \
+                    port:cmake
+
+build.cmd           cmake
+build.args          ./CMakeLists.txt
+build.env           CMAKE_INSTALL_PREFIX=${prefix}
+configure.compiler  macports-gcc-6
+configure.args      --mandir=${prefix}/share/man \
+                    --infodir=${prefix}/share/info
+
+use_configure       no
+homepage            https://github.com/Traace/extract-xiso/
+master_sites        https://github.com/Traace/extract-xiso/archive/
+distfiles           ${version}.zip
+checksums           rmd160 c71d8e5b9ae28a91a545bca1272a537d93fc1b10 \
+                    sha256 9b94bd297fdf6becb5c72f19b72a823baa4010b1de4079983eccd5816175fd74
+use_zip             yes
