@@ -1,0 +1,59 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem 1.0
+PortGroup           github 1.0
+
+github.setup        Traace mksdiso 0.9.3 v
+revision            0
+categories          sysutils
+maintainers         hotmail.de:xxtraacexx \
+                    openmaintainer
+license             GPL-2+
+description         create dc iso
+name                mksdiso
+long_description    SHHFSUZZTZTZGHGH
+homepage            https://github.com/Traace/mksdiso
+platforms           darwin
+
+checksums           rmd160  4e92e5c5adca69fe0c99974132d642acc39d4ab1 \
+                    sha256  2c382f2e00e5606a6c09407e4395be0a2b658f8567ff340613d83cd8843cb8ea
+
+depends_lib         port:cdrtools \
+                    port:p7zip \
+
+universal_variant   no
+build.args          V=2
+configure.compiler  macports-gcc-6
+build.cmd           gmake
+use_configure       no
+build.dir           ${worksrcpath}/src
+
+# ccache: invalid option -- L
+configure.ccache    no
+
+configure.pre_args
+configure.args      -Wimplicit-function-declaration -Wnarrowing \
+                    HOST_CFLAGS="${configure.cflags}" \
+                    HOST_LDFLAGS="${configure.ldflags}"
+                    
+                    
+destroot {
+    xinstall ${workpath}/${name}-${version}/bin/binhack32 ${destroot}${prefix}/bin
+    xinstall ${workpath}/${name}-${version}/bin/binhack64 ${destroot}${prefix}/bin
+    xinstall ${workpath}/${name}-${version}/bin/burncdi ${destroot}${prefix}/bin
+    xinstall ${workpath}/${name}-${version}/bin/cdirip ${destroot}${prefix}/bin
+    xinstall ${workpath}/${name}-${version}/bin/isofix ${destroot}${prefix}/bin
+    xinstall ${workpath}/${name}-${version}/bin/mksdiso ${destroot}${prefix}/bin
+    xinstall ${workpath}/${name}-${version}/bin/scramble ${destroot}${prefix}/bin
+    copy ${workpath}/${name}-${version}/mksdiso ${destroot}${prefix}/mksdisohelper
+}
+
+notes "
+You will get a error message after first start complaining about missing data-dir
+You need to syslink this data-dir into your HOME dir
+
+example:
+
+ln -s ${prefix}/mksdisohelper /users/YOURUSERNAME/.mksdiso
+
+"
