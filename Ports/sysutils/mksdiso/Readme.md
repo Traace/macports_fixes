@@ -42,9 +42,18 @@ $ sudo apt-get -f install
 
 ### On OSX
 1. Download latest portfile from [Portfile](https://github.com/Traace/macports_fixes/blob/master/Ports/sysutils/mksdiso/Portfile)
-2. Install portfile to your local repo and run "sudo portindex /PATH/TO/YOUR/LOCALREPO"
-3. Install mksdiso and its dependencies run: "sudo port -d install mksdiso"
-4. Read notes & please syslink data-dir after install: "ln -s ${prefix}/mksdisohelper $HOME/.mksdiso"
+2. Install portfile to your local repo and run:
+```
+sudo portindex /PATH/TO/YOUR/LOCALREPO
+```
+3. Install mksdiso and its dependencies run: 
+```
+sudo port -d install mksdiso
+```
+4. Read notes & please syslink data-dir after install:
+```
+ln -s ${prefix}/mksdisohelper $HOME/.mksdiso
+```
 
 On any other Distribution:
 ---------------------------------
