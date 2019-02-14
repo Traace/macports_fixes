@@ -24,6 +24,13 @@ depends_lib         port:libao \
                     port:libvorbis \
                     port:libiconv \
                     port:ncurses
+                    
+patchfiles          patch-ffmpeg-3.0.diff \
+                    patch-ffmpeg-4.0.diff
+# add missing non-POSIX SIGWINCH definition for Darwin signal.h
+platform darwin 8 {
+    patchfiles-append   patch-cmus-uicurses-sigwinch-tiger.diff
+}
 
 universal_variant   no
 build.args          V=2
