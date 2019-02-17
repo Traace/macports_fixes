@@ -1,0 +1,18 @@
+--- Makefile.in.orig
++++ Makefile.in
+@@ -161,7 +161,6 @@
+ build_triplet = @build@
+ host_triplet = @host@
+ bin_PROGRAMS = rsvg-convert$(EXEEXT) $(am__EXEEXT_1)
+-@HAVE_GTK_3_TRUE@am__append_1 = rsvg-view-3
+ @OS_WIN32_TRUE@am__append_2 = -mwindows
+ @HAVE_INTROSPECTION_TRUE@am__append_3 = $(nodist_gir_DATA) $(nodist_typelibs_DATA)
+ @ENABLE_VAPIGEN_TRUE@@HAVE_INTROSPECTION_TRUE@am__append_4 = $(VAPIGEN_VAPIS)
+@@ -188,7 +187,6 @@
+ 	config.h.win32 librsvg-${RSVG_API_VERSION}.pc \
+ 	librsvg-${RSVG_API_VERSION}-uninstalled.pc
+ CONFIG_CLEAN_VPATH_FILES =
+-@HAVE_GTK_3_TRUE@am__EXEEXT_1 = rsvg-view-3$(EXEEXT)
+ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(libdir)" \
+ 	"$(DESTDIR)$(man1dir)" "$(DESTDIR)$(docdir)" \
+ 	"$(DESTDIR)$(girdir)" "$(DESTDIR)$(typelibsdir)" \
